@@ -1,4 +1,4 @@
-package com.example;
+﻿package com.example;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -84,5 +84,11 @@ public class SpringBootDemoApplicationTests {
 		Set<String> range = boundZSetOperations.range(0, -1);
 		range.forEach(System.out::println);
 	}
+
+	@Test
+	public void test(){
+		System.out.println(11111);
+	}
+
 
 }
