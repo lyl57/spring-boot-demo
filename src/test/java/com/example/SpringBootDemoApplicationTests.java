@@ -85,4 +85,12 @@ public class SpringBootDemoApplicationTests {
 		range.forEach(System.out::println);
 	}
 
+	@Test
+	public void test(){
+		String key="testZset";
+		BoundZSetOperations boundZSetOperations = redisTemplate.boundZSetOps(key);
+		Set<String> range = boundZSetOperations.range(0, -1);
+		range.forEach(System.out::println);
+	}
+
 }
