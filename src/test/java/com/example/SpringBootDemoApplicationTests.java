@@ -1,4 +1,4 @@
-package com.example;
+﻿package com.example;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -91,6 +91,6 @@ public class SpringBootDemoApplicationTests {
 		BoundZSetOperations boundZSetOperations = redisTemplate.boundZSetOps(key);
 		Set<String> range = boundZSetOperations.range(0, -1);
 		range.forEach(System.out::println);
+		System.out.println(11111);
 	}
-
 }
