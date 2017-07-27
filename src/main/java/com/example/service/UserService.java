@@ -2,14 +2,12 @@ package com.example.service;
 
 import com.alibaba.fastjson.JSON;
 import com.example.domain.User;
-import com.example.domain.UserBook;
-import com.example.domain.UserInfo;
+import com.example.apibean.UserInfo;
 import com.example.repository.UserRepository;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.transform.AliasToBeanResultTransformer;
-import org.hibernate.transform.Transformers;
 import org.hibernate.type.LongType;
 import org.hibernate.type.StringType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
