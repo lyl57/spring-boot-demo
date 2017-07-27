@@ -10,7 +10,7 @@ import javax.persistence.Id;
  */
 
 @Entity // This tells Hibernate to make a table out of this class
-public class User extends BaseEntity{
+public class User extends BaseEntity {
 
     private String name;
 

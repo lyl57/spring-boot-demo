@@ -1,11 +1,15 @@
-package com.example.domain;
+package com.example.apibean;
 
 /**
  * Created by lyl57 on 2017/3/24.
  */
-public class UserInfo{
+public class UserInfo {
 
     private long id;
+
+    private String name;
+
+    private String email;
 
     public long getId() {
         return id;
@@ -14,9 +18,6 @@ public class UserInfo{
     public void setId(long id) {
         this.id = id;
     }
-    private String name;
-
-    private String email;
 
     public String getName() {
         return name;

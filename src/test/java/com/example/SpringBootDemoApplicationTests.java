@@ -1,4 +1,4 @@
-﻿package com.example;
+package com.example;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,79 +16,95 @@ import java.util.Set;
 @SpringBootTest
 public class SpringBootDemoApplicationTests {
 
-	@Autowired
-	RedisTemplate redisTemplate;
+    @Autowired
+    RedisTemplate redisTemplate;
 
-	@Test
-	public void contextLoads() {
+    String testKey = "userService:guideTag:";
+
+    @Test
+    public void contextLoads() {
 //		redisTemplate.opsForValue().set("test","val");
-		redisTemplate.delete("test");
-	}
+        redisTemplate.delete("test");
+    }
 
-	@Test
-	public void testList(){
-		List<String>list=new ArrayList<>();
-		for (int i=0;i<10;i++) {
-			list.add("test>>>>>>>>>"+i);
-		}
-		String testKey="testlist";
-		redisTemplate.opsForList().rightPush(testKey,list);
+    @Test
+    public void testList() {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            list.add("test>>>>>>>>>" + i);
+        }
+        String testKey = "testlist";
+        redisTemplate.opsForList().rightPush(testKey, list);
 //		System.out.println(redisTemplate.);
 
-		List<String> testlist = (List<String>) redisTemplate.opsForList().range(testKey,0,-1);
+        List<String> testlist = (List<String>) redisTemplate.opsForList().range(testKey, 0, -1);
 
-		//对testKey新加值
-		System.out.println(testlist.size());
-		redisTemplate.opsForList().rightPush(testKey,"ceshixinjia");
+        //对testKey新加值
+        System.out.println(testlist.size());
+        redisTemplate.opsForList().rightPush(testKey, "ceshixinjia");
 
-		System.out.println(testlist.size());
+        System.out.println(testlist.size());
 
-		List<String> testlist2 = (List<String>) redisTemplate.opsForList().range(testKey,0,-1);
+        List<String> testlist2 = (List<String>) redisTemplate.opsForList().range(testKey, 0, -1);
 
-	}
+    }
 
-	@Test
-	public void testSet(){
-		String key="testSet";
+    @Test
+    public void testSet() {
+        String key = "testSet";
 //		redisTemplate.opsForSet().add(key,"3");
 //		redisTemplate.opsForSet().add(key,"4");
 //		redisTemplate.opsForSet().add(key,"1");
 
-		Set set = redisTemplate.opsForSet().members(key);
+//        Set set = redisTemplate.opsForSet().members(key);
 
 //		redisTemplate.opsForSet().add(key,"6");
 
-		set=redisTemplate.opsForSet().members(key);
+//        set = redisTemplate.opsForSet().members(key);
 
-		System.out.println(set.size());
+        //set1
+//        redisTemplate.opsForSet().add(testKey + "1", 1);
+//        redisTemplate.opsForSet().add(testKey + "1", 2);
 
-	}
+        //set2  男：3、4、5、7、8、9、10、11  女： 3、4、5、6、11、14、15、16
+        String[] man="3、4、5、7、8、9、10、11".split("、");
+        String[] women="3、4、5、6、11、14、15、16".split("、");
+        for (int i = 0; i <man.length ; i++) {
+            redisTemplate.opsForSet().add(testKey + "2:"+"1", Integer.parseInt(man[i]));
+            redisTemplate.opsForSet().add(testKey + "2:"+"2",  Integer.parseInt(women[i]));
+        }
+//        System.out.println(set.size());
 
-	@Test
-	public void testZset(){
-		String key="testZset";
-		redisTemplate.opsForZSet().add(key,"2",3);
-		redisTemplate.opsForZSet().add(key,"1",1);
-		redisTemplate.opsForZSet().add(key,"2",2);
-		redisTemplate.opsForZSet().add(key,"1",2);
-		redisTemplate.opsForZSet().add(key,"3",2);
-		Set range = redisTemplate.opsForZSet().range(key, 0, -1);
-		System.out.println(range.size());
+    }
 
-	}
+    @Test
+    public void testZset() {
+        String key = "testZset";
+        redisTemplate.opsForZSet().add(key, "2", 3);
+        redisTemplate.opsForZSet().add(key, "1", 1);
+        redisTemplate.opsForZSet().add(key, "2", 2);
+        redisTemplate.opsForZSet().add(key, "1", 2);
+        redisTemplate.opsForZSet().add(key, "3", 2);
+        Set range = redisTemplate.opsForZSet().range(key, 0, -1);
+        System.out.println(range.size());
 
-	@Test
-	public void testBound(){
-		String key="testZset";
-		BoundZSetOperations boundZSetOperations = redisTemplate.boundZSetOps(key);
-		Set<String> range = boundZSetOperations.range(0, -1);
-		range.forEach(System.out::println);
-	}
+    }
 
-	@Test
-	public void test(){
-		System.out.println(11111);
-	}
+    @Test
+    public void testBound() {
+        String key = "testZset";
+        BoundZSetOperations boundZSetOperations = redisTemplate.boundZSetOps(key);
+        Set<String> range = boundZSetOperations.range(0, -1);
+        range.forEach(System.out::println);
+    }
 
+    @Test
+    public void test() {
+        String key = "testZset";
+        BoundZSetOperations boundZSetOperations = redisTemplate.boundZSetOps(key);
+        Set<String> range = boundZSetOperations.range(0, -1);
+        range.forEach(System.out::println);
+        System.out.println(11111);
+    }
 
 }

@@ -46,8 +46,12 @@ public class UserController {
 
     @RequestMapping(value = "/list",method = RequestMethod.POST)
     public ResponseEntity<?> list(User user){
-        userService.findUser(user);
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(userService.findUser(user), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/test")
+    public String test(User user){
+        return "test";
     }
 
 }

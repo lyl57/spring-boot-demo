@@ -1,9 +1,7 @@
 package com.example.service;
 
-import com.alibaba.fastjson.JSON;
 import com.example.domain.BaseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.repository.CrudRepository;
 
 /**

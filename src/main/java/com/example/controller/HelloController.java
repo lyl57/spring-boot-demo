@@ -14,15 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/hello")
 public class HelloController {
 
+
     @RequestMapping("/")
-    public String test1(){
+    public String test1() {
         return "Hello World";
     }
 
     @RequestMapping("/{name}")
-    public ResponseEntity<?> testName(@PathVariable String name){
+    public ResponseEntity<?> testName(@PathVariable String name) {
         User user = new User();
         user.setName(name);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
 }
