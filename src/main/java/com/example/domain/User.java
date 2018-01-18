@@ -1,9 +1,6 @@
 package com.example.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  * Created by lyl57 on 2017/3/13.
@@ -11,6 +8,15 @@ import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class User extends BaseEntity {
+
+    public User() {
+
+    }
+
+    public User(String name, String email) {
+        this.email = email;
+        this.name = name;
+    }
 
     private String name;
 

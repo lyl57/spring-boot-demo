@@ -24,8 +24,6 @@ import java.util.List;
 @Transactional
 public class UserService extends BaseService<UserRepository,User>{
     @Autowired
-    UserRepository userRepository;
-    @Autowired
     SessionFactory sessionFactory;
     @Autowired
     RedisTemplate redisTemplate;
